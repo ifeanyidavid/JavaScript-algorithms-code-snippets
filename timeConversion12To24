@@ -1,0 +1,44 @@
+function timeConversion12To24(timeInput) {
+	
+ 	var timeArr = timeInput.split(' '); // convert the input time to an array
+	
+	var time = timeArr[0]; // store the time portion
+	var meridian = timeArr[1]; // store the meridian portion
+	
+	var hourMinSec = time.split(':');
+	
+	var hours = hourMinSec[0];
+	var minutes = hourMinSec[1];
+	var seconds = hourMinSec[2];
+	
+	// Error handler for handling wrong hours input
+	if(parseInt(hours, 10) <= 12 ){
+		if(hours === 12) hours = '00';
+	}else{
+		hours = 'invalid';
+	}
+	
+	// Error handler for handling wrong minutes input
+	if(parseInt(minutes, 10) <= 59 ){
+		minutes = minutes;
+	}else{
+		minutes = 'invalid';
+	}
+	
+	// Error handler for handling wrong seconds input
+	if(parseInt(seconds, 10) <= 59 ){
+		seconds = seconds;
+	}else{
+		seconds = 'invalid';
+	}
+
+
+  if (meridian === 'PM'){
+		if(hours != 'invalid'){
+			hours = parseInt(hours, 10) + 12;
+		}
+  return hours + ':' + minutes + ':' + seconds;
+}
+}
+
+console.log(timeConversion12To24('07:45:15 PM'));
